@@ -3,4 +3,5 @@ from movies.views import *
 
 urlpatterns = [
     path('', index),
+    path('about/', about),
 ]
