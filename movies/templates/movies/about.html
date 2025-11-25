@@ -1,9 +1,16 @@
+{%extends 'movies/_base.html'%}
+
+
 <html>
     <body>
+        {%block content%}
         <h1>
             List of my Fav Movies:
         </h1>
         <br>
         <h2>1.Rango <br> 2.Breaking Bad</h2>
+        {%load static %}
+        <img src="{% static 'movies/commando.jpg' %}" alt="Arnold">
+        {%endblock%}
     </body>
 </html>

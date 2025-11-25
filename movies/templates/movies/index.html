@@ -1,5 +1,18 @@
+{%extends 'movies/_base.html'%}
+
 <html>   
     <body>
+        {%block content%}
           <h1>My Fav Movies !</h1>
+          {%if movies%}
+            <ul>
+                {% for movie in movies%}
+                    <li>{{movie|title}}</li>
+                {%endfor%}
+            </ul>
+          {%else%}
+            <p>no fav movies</p>
+          {%endif%}
+        {%endblock%}
     </body>
 </html>
