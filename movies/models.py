@@ -18,6 +18,12 @@ class MediaItem(models.Model):
     ) 
     watched = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
+    tmdb_id = models.PositiveIntegerField(null=True, blank=True)
+    poster_path = models.CharField(max_length=200, null=True, blank=True)
+    year = models.PositiveIntegerField(null=True, blank=True)
+    director = models.CharField(max_length=200, null=True, blank=True)
+    cast = models.TextField(null=True, blank=True)
+    imdb_url = models.URLField(null=True, blank=True)
 
     class Meta:                                 
         ordering = ['-rating', 'title']

@@ -1,0 +1,60 @@
+{% extends "movies/_base.html" %}
+{% block content %}
+<div class="max-w-6xl mx-auto px-6 py-12">
+  <div class="grid lg:grid-cols-3 gap-12">
+    <!-- Poster -->
+    <div>
+      {% if item.poster_path %}
+        <img src="{{ item.poster_path }}" alt="{{ item.title }}"
+             class="w-full rounded-2xl shadow-2xl">
+      {% else %}
+        <div class="bg-gray-800 h-full rounded-2xl flex items-center justify-center">
+          <i class="fas fa-film text-9xl text-gray-700"></i>
+        </div>
+      {% endif %}
+    </div>
+
+    <!-- Info -->
+    <div class="lg:col-span-2 space-y-6">
+      <div>
+        <h1 class="text-5xl font-bold">{{ item.title }}</h1>
+        <div class="flex items-center gap-4 mt-4 text-2xl">
+          <span class="text-yellow-400 font-bold">{{ item.rating }}/10</span>
+          {% if item.watched %}
+            <span class="text-green-400 flex items-center gap-2"><i class="fas fa-check-circle"></i> Watched</span>
+          {% endif %}
+        </div>
+      </div>
+
+      {% if item.year %}<p class="text-xl"><strong>Year:</strong> {{ item.year }}</p>{% endif %}
+      {% if item.director %}<p class="text-xl"><strong>Director:</strong> {{ item.director }}</p>{% endif %}
+      {% if item.cast %}<p class="text-xl"><strong>Cast:</strong> {{ item.cast }}</p>{% endif %}
+      {% if item.imdb_url %}
+        <a href="{{ item.imdb_url }}" target="_blank"
+           class="inline-flex items-center gap-2 bg-orange-600 hover:bg-orange-700 px-6 py-3 rounded-lg text-lg font-semibold transition">
+          <i class="fab fa-imdb text-2xl"></i> View on IMDb
+        </a>
+      {% endif %}
+    </div>
+  </div>
+
+  <!-- Similar -->
+  {% if similar %}
+  <section class="mt-20">
+    <h2 class="text-4xl font-bold mb-8">More Great {{ item.get_category_display }}s</h2>
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
+      {% for s in similar %}
+        <a href="{% url 'detail' s.title|slugify %}" class="group">
+          {% if s.poster_path %}
+            <img src="{{ s.poster_path }}" alt="{{ s.title }}"
+                 class="w-full rounded-xl shadow-lg group-hover:shadow-purple-500/50 transition">
+          {% endif %}
+          <p class="mt-2 text-center font-medium truncate">{{ s.title }}</p>
+          <p class="text-center text-yellow-400 text-sm">{{ s.rating }}/10</p>
+        </a>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+</div>
+{% endblock %}

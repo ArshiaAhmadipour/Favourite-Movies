@@ -1,0 +1,28 @@
+{% extends "movies/_base.html" %}
+{% block content %}
+<div class="max-w-7xl mx-auto px-6 py-12">
+  <h2 class="text-5xl font-bold text-center mb-4">My Watchlist</h2>
+  <p class="text-center text-gray-400 mb-12">Everything I still need to watch</p>
+
+  {% if unwatched %}
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-8">
+      {% for item in unwatched %}
+        <div class="text-center">
+          {% if item.poster_path %}
+            <img src="{{ item.poster_path }}" alt="{{ item.title }}"
+                 class="w-full rounded-xl shadow-lg mb-4">
+          {% else %}
+            <div class="bg-gray-800 h-96 rounded-xl mb-4 flex items-center justify-center">
+              <i class="fas fa-clock text-6xl text-gray-600"></i>
+            </div>
+          {% endif %}
+          <h3 class="font-semibold">{{ item.title }}</h3>
+          <p class="text-sm text-gray-400">{{ item.get_category_display }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p class="text-center text-3xl text-gray-500">Watchlist is empty! Time to celebrate</p>
+  {% endif %}
+</div>
+{% endblock %}
