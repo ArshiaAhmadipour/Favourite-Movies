@@ -17,6 +17,8 @@ Because sometimes you just want to show the world your impeccable taste.
 
 ### Live Demo
 https://favourite-movies-production.up.railway.app/
+<img width="2034" height="1345" alt="image" src="https://github.com/user-attachments/assets/6b7672a5-3b17-4ce8-bcd7-0cb46f3880d3" />
+
 
 ### Tech Stack
 - Django 5
@@ -35,6 +37,3 @@ pip install -r requirements.txt
 python manage.py migrate
 python manage.py populate_tmdb  # needs TMDB API key + VPN if blocked
 python manage.py runserver
-
-<img width="2034" height="1345" alt="image" src="https://github.com/user-attachments/assets/6b7672a5-3b17-4ce8-bcd7-0cb46f3880d3" />
-
