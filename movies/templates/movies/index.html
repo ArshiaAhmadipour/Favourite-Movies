@@ -1,18 +1,47 @@
-{%extends 'movies/_base.html'%}
+{% extends "movies/_base.html" %}
+{% load static %}
 
-<html>   
-    <body>
-        {%block content%}
-          <h1>My Fav Movies !</h1>
-          {%if movies%}
-            <ul>
-                {% for movie in movies%}
-                    <li>{{movie|title}}</li>
-                {%endfor%}
-            </ul>
-          {%else%}
-            <p>no fav movies</p>
-          {%endif%}
-        {%endblock%}
-    </body>
-</html>
+{% block content %}
+  <div class="space-y-16">
+
+    <!-- Top Rated Header -->
+    <div class="text-center">
+      <h2 class="text-5xl font-extrabold bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">
+        Top Rated of All Time
+      </h2>
+      <p class="text-gray-400 mt-4 text-lg">Sorted by my personal score (10 = masterpiece)</p>
+    </div>
+
+    <!-- Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+      {% for item in all_media %}
+        <div class="group relative bg-gray-800/50 backdrop-blur border border-gray-700 rounded-2xl overflow-hidden hover:border-purple-500 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl">
+          <!-- Rating Badge -->
+          <div class="absolute top-3 right-3 z-10 bg-black/80 px-3 py-1 rounded-full font-bold text-lg flex items-center gap-2">
+            <i class="fas fa-star text-yellow-400"></i>
+            {{ item.rating|floatformat:"0" }}
+          </div>
+
+          <!-- Card Content -->
+          <div class="p-6 text-center">
+            {% if item.watched %}
+              <i class="fas fa-check-circle text-green-400 text-4xl mb-4"></i>
+            {% else %}
+              <i class="far fa-clock text-gray-500 text-4xl mb-4"></i>
+            {% endif %}
+
+            <h3 class="text-xl font-bold text-white group-hover:text-purple-400 transition line-clamp-2">
+              {{ item.title }}
+            </h3>
+
+            <p class="text-sm text-gray-400 mt-2 uppercase tracking-wider">
+              {{ item.get_category_display }}
+            </p>
+          </div>
+        </div>
+      {% empty %}
+        <p class="col-span-full text-center text-gray-500 text-2xl">No rated items yet!</p>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

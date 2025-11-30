@@ -1,9 +1,31 @@
-<html>
-    <body>
-        <div>
-            <a href="{% url 'home' %}">Fav Movies</a>
-            <a href="{% url 'about' %}">About</a>
-        </div>
-        {%block content%} {%endblock%}
-    </body>
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Media Vault</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <style>
+    body { background: linear-gradient(to bottom, #0f172a, #1e293b); min-height: 100vh; }
+  </style>
+</head>
+<body class="text-gray-100">
+  <!-- Navigation -->
+  <nav class="bg-gray-900/80 backdrop-blur border-b border-gray-800 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+      <h1 class="text-3xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+        My Media Vault
+      </h1>
+      <div class="space-x-8 text-lg">
+        <a href="{% url 'home' %}" class="hover:text-purple-400 transition">Home</a>
+        <a href="{% url 'about' %}" class="hover:text-purple-400 transition">About</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="max-w-7xl mx-auto px-6 py-12">
+    {% block content %}{% endblock %}
+  </main>
+</body>
 </html>
