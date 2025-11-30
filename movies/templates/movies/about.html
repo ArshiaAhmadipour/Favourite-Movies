@@ -1,16 +1,39 @@
-{%extends 'movies/_base.html'%}
+{% extends "movies/_base.html" %}
 
+{% block content %}
+<div class="max-w-4xl mx-auto px-6 py-20 text-center space-y-12">
+  <h1 class="text-6xl font-extrabold bg-gradient-to-r from-purple-400 via-pink-400 to-red-400 bg-clip-text text-transparent">
+    My Media Vault
+  </h1>
 
-<html>
-    <body>
-        {%block content%}
-        <h1>
-            List of my Fav Movies:
-        </h1>
-        <br>
-        <h2>1.Rango <br> 2.Breaking Bad</h2>
-        {%load static %}
-        <img src="{% static 'movies/commando.jpg' %}" alt="Arnold">
-        {%endblock%}
-    </body>
-</html>
+  <div class="prose prose-invert prose-lg mx-auto space-y-6 text-gray-300">
+    <p class="text-xl leading-relaxed">
+      This is my personal cinema sanctuary — a love letter to every movie, series, anime, and animation that has ever moved me, made me laugh, cry, or stay up all night thinking.
+    </p>
+
+    <p class="leading-relaxed">
+      I’ve always kept messy text files and notes about what I’ve watched and how much I loved (or didn’t love) something. One day I got tired of that chaos and decided to build something beautiful, honest, and truly mine.
+    </p>
+
+    <p class="leading-relaxed">
+      So here it is: every rating is 100% my own taste (yes, Rango and Surf’s Up are perfect 10s — fight me), every poster is pulled straight from TMDB, and every detail page is exactly how I want to remember these stories.
+    </p>
+
+    <p class="leading-relaxed">
+      Built with Django, a lot of coffee, late-night debugging sessions, and an unhealthy obsession with perfect grid layouts. Deployed so I (and maybe you) can visit it anytime, anywhere.
+    </p>
+
+    <div class="pt-8">
+      <a href="https://github.com/ArshiaAhmadipour" target="_blank"
+         class="inline-flex items-center gap-3 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 px-8 py-4 rounded-full text-xl font-bold transition transform hover:scale-105">
+        <i class="fab fa-github"></i>
+        github.com/ArshiaAhmadipour
+      </a>
+    </div>
+
+    <p class="mt-16 text-2xl font-handwriting text-pink-400">
+      Made with <span class="text-red-500">♥</span> by Arshia
+    </p>
+  </div>
+</div>
+{% endblock %}
